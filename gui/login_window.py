@@ -29,6 +29,13 @@ class LoginWindow:
         password = self.password_entry.get()
         if FileHandler.validate_user(login, password):
             messagebox.showinfo("Sukces", "Zalogowano pomyślnie!")
+
+            self.root.destroy()
+            from gui.dashboard_window import CryptoDashboard
+            new_root = tk.Tk()
+            app = CryptoDashboard(new_root)
+            new_root.mainloop()
+
         else:
             messagebox.showerror("Błąd", "Niepoprawny login lub hasło.")
 

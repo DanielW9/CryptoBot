@@ -1,4 +1,4 @@
-# main.py
+
 
 import tkinter as tk
 from gui.login_window import LoginWindow
