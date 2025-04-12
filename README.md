@@ -1,23 +1,24 @@
-#CryptoBot – Śledzenie kursów kryptowalut
+# CryptoBot – Śledzenie kursów kryptowalut
 
-**CryptoBot** to prosty projekt stworzony w Pythonie z użyciem biblioteki `tkinter`, który umożliwia:
-- Pobieranie aktualnych kursów kryptowalut (np. Bitcoin, Ethereum) z API CoinGecko
+**CryptoBot** to aplikacja stworzona w Pythonie z użyciem biblioteki `tkinter`, która umożliwia:
+- Pobieranie aktualnych kursów kryptowalut (np. Bitcoin, Ethereum, Dogecoin, Litecoin) z API CoinGecko
 - Wyświetlanie danych w graficznym interfejsie użytkownika (GUI)
 - Zapisywanie danych do pliku CSV
-- Tworzenie wykresów zmian kursu na podstawie zapisanych danych
+- Tworzenie wykresów przedstawiających zmiany kursów kryptowalut na podstawie zapisanych danych
 
 ---
 
-#Wymagania
+## Wymagania
 
 - Python 3.8+
 - `requests`
-- `matplotlib` *(do wykresów)*
+- `matplotlib`
+- `pandas`
 
 Zainstaluj wymagane biblioteki:
 
 ```bash
-pip install requests matplotlib
+pip install -r requirements.txt
 
 Jak uruchomić
 
@@ -32,40 +33,59 @@ python main.py
 
 Wygląd aplikacji
 
-    Wybierz nazwę kryptowaluty (np. bitcoin, ethereum)
+    Aplikacja posiada ekran logowania, w którym użytkownik może się zalogować lub zarejestrować.
 
-    Kliknij „Pobierz i Zapisz”
+    Po zalogowaniu użytkownik zostaje przeniesiony do głównego ekranu, gdzie może wybrać kryptowalutę (np. Bitcoin, Ethereum) i kliknąć przycisk „Pobierz dane”.
 
-    Cena zostanie wyświetlona i zapisana do pliku prices.csv
+    Cena wybranej kryptowaluty zostaje wyświetlona na ekranie i zapisana do pliku data/crypto_history.csv.
 
-Wykresy
+Funkcje
 
-Aplikacja może generować wykresy zmian cen na podstawie zapisanych danych w CSV.
+    Pobieranie kursów kryptowalut: Aplikacja łączy się z API CoinGecko i pobiera dane o cenach kryptowalut.
 
-Przykładowy wykres: (screen tutaj, jeśli chcesz dodać)
+    Tworzenie wykresów: Aplikacja generuje wykresy przedstawiające zmiany ceny wybranej kryptowaluty w czasie na podstawie zapisanych danych.
+
+    Logowanie i rejestracja użytkownika: Użytkownicy mogą się logować oraz rejestrować w aplikacji, a ich dane są przechowywane w pliku data/users.csv.
+
 Struktura projektu
 
 cryptobot/
 ├── main.py             # Główne uruchomienie aplikacji
-├── gui.py              # Interfejs użytkownika (Tkinter)
-├── crypto.py           # Pobieranie kursów z API
-├── csv_logger.py       # Logowanie danych do pliku CSV
-├── utils.py            # (opcjonalne narzędzia)
-├── prices.csv          # Plik z zapisanymi kursami (ignorowany w Git)
-└── README.md           # Opis projektu
+├── gui/                # Folder z plikami GUI
+│   ├── login_window.py # Ekran logowania
+│   └── dashboard_window.py  # Główny ekran z wykresami
+├── utils/              # Folder z pomocniczymi plikami
+│   ├── crypto_fetcher.py   # Pobieranie danych z API
+│   └── file_handler.py      # Obsługa plików (logowanie użytkowników)
+├── data/               # Folder z danymi użytkowników i historii kursów
+│   ├── crypto_history.csv   # Historia kursów kryptowalut
+│   └── users.csv           # Plik z danymi użytkowników
+├── requirements.txt     # Zależności do zainstalowania
+├── .gitignore           # Ignorowanie plików tymczasowych
+└── README.md            # Opis projektu
 
-.gitignore
+Zawartość plików
 
-Projekt ignoruje:
+    data/crypto_history.csv: Plik zawierający historię kursów kryptowalut (data, cena).
 
-    Pliki tymczasowe (__pycache__, .pyc)
+    data/users.csv: Plik zawierający dane użytkowników (login, hasło).
 
-    Konfigurację IDE (.idea/, .vscode/)
+    gui/: Folder zawierający wszystkie pliki GUI aplikacji (logowanie, wykresy).
 
-    Plik z danymi prices.csv
+    utils/: Folder zawierający pomocnicze skrypty, takie jak pobieranie danych z API i zarządzanie użytkownikami.
+
+Ignorowanie plików
+
+Projekt ignoruje następujące pliki i foldery:
+
+    Pliki tymczasowe (__pycache__, .pyc, .pyo, .log)
+
+    Konfiguracje IDE (np. .idea/, .vscode/)
+
+    Pliki danych (data/crypto_history.csv, data/users.csv)
 
 Autor
 
 Daniel Wasiewicz
 
-Projekt stworzony w ramach nauki na studiach
+Projekt stworzony w ramach nauki na studiach.
