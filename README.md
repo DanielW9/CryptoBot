@@ -24,7 +24,7 @@ Jak uruchomić
 
     Sklonuj repozytorium:
 
-git clone https://github.com/TWOJA-NAZWA-UZYTKOWNIKA/CryptoBot.git
+git clone https://github.com/DanielW9/CryptoBot.git
 cd CryptoBot
 
     Uruchom aplikację:
